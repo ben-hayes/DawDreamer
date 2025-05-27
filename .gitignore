@@ -21,3 +21,6 @@ dist/*
 
 # vs code configuration
 .vscode/*
+# pixi environments
+.pixi
+*.egg-info

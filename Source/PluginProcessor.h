@@ -74,6 +74,10 @@ class PluginProcessor : public ProcessorBase {
 
   void saveStateInformation(std::string filepath);
 
+  void loadStateInformationFromMemory(void* data, size_t size);
+
+  std::vector<std::uint8_t> saveStateInformationToMemory() const;
+
   void saveMIDI(std::string& savePath);
 
  private:
@@ -126,4 +130,9 @@ class PluginProcessorWrapper : public PluginProcessor {
   int wrapperGetPluginParameterSize();
 
   py::list getPluginParametersDescription();
+   
+  py::bytes wrapperSaveStateInformationToMemory();
+
+  // Accept bytes from Python and restore the state
+  void wrapperLoadStateInformationFromMemory(py::bytes pyData);
 };

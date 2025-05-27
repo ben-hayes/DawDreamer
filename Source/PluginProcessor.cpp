@@ -403,6 +403,22 @@ void PluginProcessor::loadStateInformation(std::string filepath) {
   StandalonePluginWindow tmp_window(*this, *myPlugin);
 }
 
+void PluginProcessor::loadStateInformationFromMemory(void* data,
+                                                    size_t size) {
+  if (data == nullptr || size == 0) {
+    throw std::runtime_error("Invalid data or size for loading state.");
+  }
+
+  myPlugin->setStateInformation((const char*)data,
+                                (int)size);
+
+  int i = 0;
+  for (auto* parameter : myPlugin->getParameters()) {
+    ProcessorBase::setAutomationValByIndex(i, parameter->getValue());
+    i++;
+  }
+}
+
 void PluginProcessor::saveStateInformation(std::string filepath) {
   THROW_ERROR_IF_NO_PLUGIN
 
@@ -419,6 +435,19 @@ void PluginProcessor::saveStateInformation(std::string filepath) {
   }
 
   stream.write(state.getData(), state.getSize());
+}
+
+
+std::vector<std::uint8_t> PluginProcessor::saveStateInformationToMemory() const
+{
+    THROW_ERROR_IF_NO_PLUGIN
+
+    juce::MemoryBlock state;
+    myPlugin->getStateInformation(state);
+
+    const std::uint8_t* begin =
+        static_cast<const std::uint8_t*>(state.getData());
+    return std::vector<std::uint8_t>(begin, begin + state.getSize());
 }
 
 void PluginProcessor::createParameterLayout() {
@@ -940,4 +969,21 @@ py::list PluginProcessorWrapper::getPluginParametersDescription() {
   }
 
   return myList;
+}
+
+py::bytes PluginProcessorWrapper::wrapperSaveStateInformationToMemory()
+{
+    auto data = saveStateInformationToMemory();
+    return py::bytes(reinterpret_cast<const char*>(data.data()),
+                     data.size());
+}
+// Accept bytes from Python and restore the state
+void PluginProcessorWrapper::wrapperLoadStateInformationFromMemory(py::bytes pyData)
+{
+    char*       buf;
+    ssize_t     len;
+    if (PYBIND11_BYTES_AS_STRING_AND_SIZE(pyData.ptr(), &buf, &len) == -1)
+        throw std::runtime_error("Invalid bytes object");
+
+    loadStateInformationFromMemory(buf, static_cast<size_t>(len));
 }

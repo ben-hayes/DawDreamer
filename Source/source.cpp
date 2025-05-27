@@ -341,6 +341,10 @@ but the filter mode cannot under automation.";
            arg("filepath"), "Save the state to a file.")
       .def("load_state", &PluginProcessorWrapper::loadStateInformation,
            arg("filepath"), "Load the state from a file.")
+      .def("save_state_to_memory", &PluginProcessorWrapper::wrapperSaveStateInformationToMemory,
+           "Save the state to memory.")
+      .def("load_state_from_memory", &PluginProcessorWrapper::wrapperLoadStateInformationFromMemory,
+           arg("state_bytes"), "Load the state from memory")
       .def("open_editor", &PluginProcessorWrapper::openEditor,
            "Open the UI editor for the plugin.")
       .def("load_preset", &PluginProcessorWrapper::loadPreset, arg("filepath"),
