@@ -25,7 +25,7 @@ def get_dawdreamer_version():
     return version
 
 
-DAWDREAMER_VERSION = get_dawdreamer_version()
+DAWDREAMER_VERSION = "0.8.999"
 
 
 class BinaryDistribution(Distribution):
