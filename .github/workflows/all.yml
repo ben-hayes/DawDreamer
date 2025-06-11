@@ -122,7 +122,7 @@ jobs:
     - name: Build libsamplerate
       run: |
         cd thirdparty/libsamplerate
-        cmake -DCMAKE_BUILD_TYPE=Release -Bbuild_release
+        cmake -DCMAKE_BUILD_TYPE=Release -Bbuild_release -DCMAKE_POLICY_VERSION_MINIMUM=3.5
         cd build_release
         msbuild libsamplerate.sln /property:Configuration=Release
 
@@ -190,7 +190,7 @@ jobs:
     - name: Build libsamplerate
       run: |
         cd thirdparty/libsamplerate
-        cmake -DCMAKE_BUILD_TYPE=Release -Bbuild_release -DCMAKE_OSX_ARCHITECTURES="${{matrix.ARCHS}}" -DLIBSAMPLERATE_EXAMPLES=off -DCMAKE_OSX_DEPLOYMENT_TARGET=11.0
+        cmake -DCMAKE_BUILD_TYPE=Release -Bbuild_release -DCMAKE_OSX_ARCHITECTURES="${{matrix.ARCHS}}" -DLIBSAMPLERATE_EXAMPLES=off -DCMAKE_OSX_DEPLOYMENT_TARGET=11.0 -DCMAKE_POLICY_VERSION_MINIMUM=3.5
         make --directory=build_release
         cd ../..
 
