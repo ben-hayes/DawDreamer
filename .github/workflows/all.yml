@@ -140,8 +140,7 @@ jobs:
     name: >-
       Publish Python 🐍 distribution 📦 to PyPI
     if: github.event_name == 'release' && github.event.action == 'published'
-    needs:
-    - build
+    needs: [build-ubuntu, build-macos]
     runs-on: ubuntu-latest
     environment:
       name: pypi
