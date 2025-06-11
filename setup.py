@@ -25,7 +25,7 @@ def get_dawdreamer_version():
     return version
 
 
-DAWDREAMER_VERSION = "0.8.4+bhfork"
+DAWDREAMER_VERSION = "0.8.4"
 
 
 class BinaryDistribution(Distribution):

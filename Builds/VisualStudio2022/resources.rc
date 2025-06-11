@@ -16,9 +16,9 @@ BEGIN
     BLOCK "040904E4"
     BEGIN
       VALUE "FileDescription",  "DawDreamer\0"
-      VALUE "FileVersion",  "0.8.4+bhfork\0"
+      VALUE "FileVersion",  "0.8.4\0"
       VALUE "ProductName",  "DawDreamer\0"
-      VALUE "ProductVersion",  "0.8.4+bhfork\0"
+      VALUE "ProductVersion",  "0.8.4\0"
     END
   END
 
