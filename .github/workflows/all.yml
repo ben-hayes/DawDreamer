@@ -26,7 +26,7 @@ jobs:
         include:
         # - { python-version: "3.8", pythonLibPath: "/opt/python/cp39-cp38/lib", pythonInclude: "/opt/python/cp38-cp38/include/python3.8", cibwbuild: "cp38-manylinux_x86_64"}
         # - { python-version: "3.9", pythonLibPath: "/opt/python/cp39-cp39/lib", pythonInclude: "/opt/python/cp39-cp39/include/python3.9", cibwbuild: "cp39-manylinux_x86_64"}
-        - { python-version: "3.10", pythonLibPath: "/opt/python/cp310-cp310/lib", pythonInclude: "/opt/python/cp310-cp310/include/python3.10", cibwbuild: "cp310-manylinux_x86_64"}
+        # - { python-version: "3.10", pythonLibPath: "/opt/python/cp310-cp310/lib", pythonInclude: "/opt/python/cp310-cp310/include/python3.10", cibwbuild: "cp310-manylinux_x86_64"}
         - { python-version: "3.11", pythonLibPath: "/opt/python/cp311-cp311/lib", pythonInclude: "/opt/python/cp311-cp311/include/python3.11", cibwbuild: "cp311-manylinux_x86_64"}
         - { python-version: "3.12", pythonLibPath: "/opt/python/cp312-cp312/lib", pythonInclude: "/opt/python/cp312-cp312/include/python3.12", cibwbuild: "cp312-manylinux_x86_64"}
         # - { python-version: "3.8", pythonLibPath: "/opt/python/cp39-cp38/lib", pythonInclude: "/opt/python/cp38-cp38/include/python3.8", cibwbuild: "cp38-manylinux_aarch64"}
@@ -87,9 +87,9 @@ jobs:
       matrix:
         include:
         # - { os: macos-12, build: cp39-macosx_x86_64, python-version: "3.9", ARCHS: "x86_64" }
-        - { os: macos-latest, build: cp310-macosx_x86_64, python-version: "3.10", ARCHS: "x86_64" }
-        - { os: macos-latest, build: cp311-macosx_x86_64, python-version: "3.11", ARCHS: "x86_64" }
-        - { os: macos-latest, build: cp312-macosx_x86_64, python-version: "3.12", ARCHS: "x86_64" }
+        # - { os: macos-latest, build: cp310-macosx_x86_64, python-version: "3.10", ARCHS: "x86_64" }
+        # - { os: macos-latest, build: cp311-macosx_x86_64, python-version: "3.11", ARCHS: "x86_64" }
+        # - { os: macos-latest, build: cp312-macosx_x86_64, python-version: "3.12", ARCHS: "x86_64" }
         # - { os: macos-12, build: cp39-macosx_arm64, python-version: "3.9", ARCHS: "arm64" }
         - { os: macos-latest, build: cp310-macosx_arm64, python-version: "3.10", ARCHS: "arm64" }
         - { os: macos-latest, build: cp311-macosx_arm64, python-version: "3.11", ARCHS: "arm64" }
