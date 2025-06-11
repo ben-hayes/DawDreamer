@@ -8,6 +8,15 @@ on:
     types: [published]
   workflow_dispatch: {}
 jobs:
+  build-ubuntu-docker:
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: true
+
+    - name: Build Docker image
+      run: docker build -t dawdreamer .
 
   build-ubuntu:
     runs-on: ubuntu-22.04
