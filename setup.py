@@ -115,8 +115,8 @@ print('package_data: ', package_data)
 long_description = (Path(__file__).parent / "README.md").read_text()
 
 setup(
-    name='dawdreamer',
-    url='https://github.com/DBraun/DawDreamer',
+    name='dawdreamer-bh',
+    url='https://github.com/ben-hayes/DawDreamer',
     project_urls={
         'Documentation': 'https://dirt.design/DawDreamer',
         'Source': 'https://github.com/DBraun/DawDreamer',
